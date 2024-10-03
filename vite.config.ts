@@ -1,7 +1,23 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { coverageConfigDefaults, defineConfig } from "vitest/config";
+import react from "@vitejs/plugin-react";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-})
+  test: {
+    environment: "happy-dom",
+    setupFiles: "./setupTests.ts",
+    globals: true,
+    coverage: {
+      provider: "v8",
+      reporter: ["text", "json", "html"],
+      exclude: [
+        "**/*.mjs",
+        "tailwind.config.ts",
+        "src/constants",
+        "src/types",
+        ...coverageConfigDefaults.exclude,
+      ],
+    },
+  },
+});
