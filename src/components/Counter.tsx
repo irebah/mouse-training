@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { useGame } from "../context/GameContext";
-import { GAME_ACTIONS } from "../types";
+import { useGameProvider } from "../context/GameContext";
 import { MAX_TIME, REMAINDER_TIME } from "../constants";
 import { getMinutes, getSeconds } from "../utils/time";
+import { STOP_GAME } from "../context/GameContext/types";
 
 const Counter = () => {
   const [time, setTime] = useState<number>(MAX_TIME);
-  const { state, dispatch } = useGame();
+  const { state, dispatch } = useGameProvider();
 
   useEffect(() => {
     let intervalId: number;
@@ -14,7 +14,7 @@ const Counter = () => {
     if (state.activeGame) {
       intervalId = setInterval(() => setTime(time - 1), 1000);
       if (time <= 0) {
-        dispatch({ type: GAME_ACTIONS.STOP_GAME });
+        dispatch({ type: STOP_GAME });
       }
     } else {
       setTime(MAX_TIME);

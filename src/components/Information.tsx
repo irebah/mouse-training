@@ -1,4 +1,4 @@
-import { useGame } from "../context/GameContext";
+import { useGameProvider } from "../context/GameContext";
 import Counter from "./Counter";
 
 interface Props {
@@ -6,7 +6,7 @@ interface Props {
 }
 
 const Information = ({ className = "" }: Props) => {
-  const { state } = useGame();
+  const { state } = useGameProvider();
 
   return (
     <section

@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
-import Clickable from "./Clickable";
-import { useGame } from "../context/GameContext";
-import { GAME_ACTIONS } from "../types";
-import { SQUARE_SIZE } from "../constants";
+import Clickable from "./Clickable/Clickable";
+import { useGameProvider } from "../context/GameContext";
+import { CLICKABLE_SIZE } from "../constants";
+import { SET_GRID_SIZE } from "../context/GameContext/types";
 
 interface Props {
   className?: string;
@@ -10,18 +10,18 @@ interface Props {
 
 const ClickableContainer = ({ className = "" }: Props) => {
   const gridRef = useRef<HTMLDivElement | null>(null);
-  const { state, dispatch } = useGame();
+  const { state, dispatch } = useGameProvider();
 
   useEffect(() => {
     if (gridRef.current) {
       const width = gridRef.current.clientWidth;
       const height = gridRef.current.clientHeight;
 
-      const cols = Math.floor(width / SQUARE_SIZE);
-      const rows = Math.floor(height / SQUARE_SIZE);
+      const cols = Math.floor(width / CLICKABLE_SIZE);
+      const rows = Math.floor(height / CLICKABLE_SIZE);
 
       dispatch({
-        type: GAME_ACTIONS.SET_GRID_SIZE,
+        type: SET_GRID_SIZE,
         payload: {
           rows,
           cols,
@@ -38,15 +38,11 @@ const ClickableContainer = ({ className = "" }: Props) => {
         ref={gridRef}
         className={`${className} grid gap-0`}
         style={{
-          gridTemplateColumns: `repeat(${state.cols}, ${SQUARE_SIZE}px)`,
+          gridTemplateColumns: `repeat(${state.cols}, ${CLICKABLE_SIZE}px)`,
         }}
       >
         {[...Array(state.rows * state.cols).keys()].map((index) => (
-          <Clickable
-            key={index}
-            active={index === state.activeSquare}
-            size={SQUARE_SIZE}
-          />
+          <Clickable key={index} active={index === state.activeElement} />
         ))}
       </div>
     </section>
