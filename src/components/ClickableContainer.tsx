@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import Clickable from "./Clickable/Clickable";
 import { useGameProvider } from "../context/GameContext";
-import { CLICKABLE_SIZE } from "../constants";
+import { CLICKABLE_SIZE, OPACITY_INACTIVE_GAME } from "../constants";
 import { SET_GRID_SIZE } from "../context/GameContext/types";
 
 interface Props {
@@ -32,7 +32,9 @@ const ClickableContainer = ({ className = "" }: Props) => {
 
   return (
     <section
-      className={`${!state.activeGame ? "opacity-10" : ""} w-full h-full`}
+      className={`${
+        !state.activeGame ? OPACITY_INACTIVE_GAME : ""
+      } w-full h-full`}
     >
       <div
         ref={gridRef}
