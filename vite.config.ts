@@ -17,6 +17,7 @@ export default defineConfig({
         "src/constants",
         "src/types",
         "src/mocks",
+        "src/main.tsx",
         ...coverageConfigDefaults.exclude,
       ],
     },
