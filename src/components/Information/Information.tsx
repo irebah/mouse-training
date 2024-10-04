@@ -1,6 +1,6 @@
 import { OPACITY_INACTIVE_GAME } from "../../constants";
 import { useGameProvider } from "../../context/GameContext";
-import Counter from "../Counter";
+import Timer from "../Timer";
 
 interface Props {
   className?: string;
@@ -16,7 +16,7 @@ const Information = ({ className = "" }: Props) => {
         !state.activeGame ? OPACITY_INACTIVE_GAME : ""
       }`}
     >
-      <Counter />
+      <Timer />
       <article>
         <p className="text-2xl mt-10">Clicked</p>
         <p data-testid="elementsClicked" className="text-8xl">

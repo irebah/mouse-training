@@ -4,7 +4,7 @@ import { MAX_TIME, REMAINDER_TIME } from "../constants";
 import { getMinutes, getSeconds } from "../utils/time";
 import { STOP_GAME } from "../context/GameContext/types";
 
-const Counter = () => {
+const Timer = () => {
   const [time, setTime] = useState<number>(MAX_TIME);
   const { state, dispatch } = useGameProvider();
 
@@ -33,4 +33,4 @@ const Counter = () => {
   );
 };
 
-export default Counter;
+export default Timer;

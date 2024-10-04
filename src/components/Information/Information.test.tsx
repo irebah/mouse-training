@@ -37,11 +37,11 @@ describe("Information", () => {
     );
   });
 
-  test("it should render a Counter", () => {
-    vi.mock("../Counter", () => {
+  test("it should render a Timer", () => {
+    vi.mock("../Timer", () => {
       return {
         __esModule: true,
-        default: () => <div data-testid="counter">Mocked Counter</div>,
+        default: () => <div data-testid="timer">Mocked Timer</div>,
       };
     });
 
@@ -51,7 +51,7 @@ describe("Information", () => {
       </GameProvider>
     );
 
-    expect(screen.getByTestId("counter")).toBeInTheDocument();
+    expect(screen.getByTestId("timer")).toBeInTheDocument();
   });
 
   test("it should accept a classname", () => {
