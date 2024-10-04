@@ -5,6 +5,22 @@ import Information from "./Information";
 import { OPACITY_INACTIVE_GAME } from "../../constants";
 
 describe("Information", () => {
+  test("it should render without any param when it has the game context", () => {
+    render(
+      <MockProvider>
+        <Information />
+      </MockProvider>
+    );
+
+    expect(screen.getByTestId("information")).toBeInTheDocument();
+  });
+
+  test("it should not render when it has not the game context", () => {
+    expect(() => render(<Information />)).toThrow(
+      "useGameProvider must be used within a GameProvider"
+    );
+  });
+
   test("it should display the number of elements clicked from the state", () => {
     const dummyElementsClicked = 100;
     render(

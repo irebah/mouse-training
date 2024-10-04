@@ -1,5 +1,8 @@
-import { useGameProvider } from "../context/GameContext";
-import { SELECT_RANDOM_SQUARE, START_GAME } from "../context/GameContext/types";
+import { useGameProvider } from "../../context/GameContext";
+import {
+  SELECT_RANDOM_SQUARE,
+  START_GAME,
+} from "../../context/GameContext/types";
 
 const StartButton = () => {
   const { state, dispatch } = useGameProvider();

@@ -73,7 +73,7 @@ describe("Clickable", () => {
     }
   );
 
-  test("it should increase the counter snd select a random square when clicked if the element is active and the game is happening", async () => {
+  test("it should increase the counter and select a random square when clicked if the element is active and the game is happening", async () => {
     const user = userEvent.setup();
 
     const mockDispatch = vi.fn();
