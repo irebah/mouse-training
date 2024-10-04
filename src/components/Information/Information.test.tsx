@@ -3,13 +3,14 @@ import initialState from "../../context/GameContext/initialState";
 import MockProvider from "../../mocks/MockProvider";
 import Information from "./Information";
 import { OPACITY_INACTIVE_GAME } from "../../constants";
+import { GameProvider } from "../../context/GameContext";
 
 describe("Information", () => {
   test("it should render without any param when it has the game context", () => {
     render(
-      <MockProvider>
+      <GameProvider>
         <Information />
-      </MockProvider>
+      </GameProvider>
     );
 
     expect(screen.getByTestId("information")).toBeInTheDocument();
@@ -45,9 +46,9 @@ describe("Information", () => {
     });
 
     render(
-      <MockProvider>
+      <GameProvider>
         <Information />
-      </MockProvider>
+      </GameProvider>
     );
 
     expect(screen.getByTestId("counter")).toBeInTheDocument();
@@ -57,9 +58,9 @@ describe("Information", () => {
     const dummyClass = "dummy";
 
     render(
-      <MockProvider>
+      <GameProvider>
         <Information className={dummyClass} />
-      </MockProvider>
+      </GameProvider>
     );
 
     expect(screen.getByTestId("information")).toHaveClass(dummyClass);

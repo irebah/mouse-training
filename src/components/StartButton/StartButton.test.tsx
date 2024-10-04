@@ -8,13 +8,14 @@ import {
   START_GAME,
 } from "../../context/GameContext/types";
 import StartButton from "./StartButton";
+import { GameProvider } from "../../context/GameContext";
 
 describe("Start Button", () => {
   test("it should render without any param when it has the game context", () => {
     render(
-      <MockProvider>
+      <GameProvider>
         <StartButton />
-      </MockProvider>
+      </GameProvider>
     );
 
     expect(screen.getByRole("button")).toBeInTheDocument();

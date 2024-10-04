@@ -14,13 +14,14 @@ import {
   INCREASE_COUNTER,
   SELECT_RANDOM_SQUARE,
 } from "../../context/GameContext/types";
+import { GameProvider } from "../../context/GameContext";
 
 describe("Clickable", () => {
   test("it should render without any param when it has the game context", () => {
     render(
-      <MockProvider>
+      <GameProvider>
         <Clickable />
-      </MockProvider>
+      </GameProvider>
     );
 
     expect(screen.getByRole("button")).toBeInTheDocument();
@@ -34,9 +35,9 @@ describe("Clickable", () => {
 
   test("it should have a specified size comming defined as constants", () => {
     render(
-      <MockProvider>
+      <GameProvider>
         <Clickable />
-      </MockProvider>
+      </GameProvider>
     );
 
     expect(screen.getByRole("button")).toHaveStyle(
@@ -100,9 +101,9 @@ describe("Clickable", () => {
 
   test("it should have active background if it is active", () => {
     render(
-      <MockProvider>
+      <GameProvider>
         <Clickable active />
-      </MockProvider>
+      </GameProvider>
     );
 
     const button = screen.getByRole("button");
@@ -112,9 +113,9 @@ describe("Clickable", () => {
 
   test("it should have inactive background if it is inactive", () => {
     render(
-      <MockProvider>
+      <GameProvider>
         <Clickable />
-      </MockProvider>
+      </GameProvider>
     );
 
     const button = screen.getByRole("button");
@@ -126,9 +127,9 @@ describe("Clickable", () => {
     const dummyClass = "dummy";
 
     render(
-      <MockProvider>
+      <GameProvider>
         <Clickable className={dummyClass} />
-      </MockProvider>
+      </GameProvider>
     );
 
     const button = screen.getByRole("button");
