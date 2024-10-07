@@ -6,7 +6,11 @@ const config: Config = {
     extend: {},
   },
   plugins: [
-    function ({ addBase }) {
+    function ({
+      addBase,
+    }: {
+      addBase: (base: Record<string, { [key: string]: string }>) => void;
+    }) {
       addBase({
         "*": {
           boxSizing: "border-box",
