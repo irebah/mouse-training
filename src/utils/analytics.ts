@@ -1,6 +1,6 @@
 import ReactGA from "react-ga4";
 
-const TRACKING_ID = "G-QN5LSXBJFK";
+export const TRACKING_ID = "G-QN5LSXBJFK";
 
 export const initAnalytics = () => {
   if (import.meta.env.MODE !== "development") {
