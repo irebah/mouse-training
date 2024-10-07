@@ -1,6 +1,6 @@
 import { OPACITY_INACTIVE_GAME } from "../../constants";
 import { useGameProvider } from "../../context/GameContext";
-import Timer from "../Timer";
+import Timer from "../Timer/Timer";
 
 interface Props {
   className?: string;

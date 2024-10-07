@@ -38,7 +38,7 @@ describe("Information", () => {
   });
 
   test("it should render a Timer", () => {
-    vi.mock("../Timer", () => {
+    vi.mock("../Timer/Timer", () => {
       return {
         __esModule: true,
         default: () => <div data-testid="timer">Mocked Timer</div>,
