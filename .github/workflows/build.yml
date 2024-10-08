@@ -1,4 +1,4 @@
-name: Build
+name: Build and test
 
 on:
   push:
@@ -13,13 +13,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: "20.17.0"
+          node-version-file: ".nvmrc"
 
       - name: Install pnpm
         run: npm install -g pnpm
@@ -35,3 +33,17 @@ jobs:
         with:
           name: build-artifact
           path: ./dist
+
+      - name: Run tests and generate coverage
+        run: pnpm run coverage
+
+      - name: Upload test results to Codecov
+        if: ${{ !cancelled() }}
+        uses: codecov/test-results-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Upload results to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
