@@ -41,10 +41,12 @@ const Timer = ({ timeLeft = MAX_TIME }: Props) => {
 
   return (
     <div data-testid="timer">
-      <p className="text-3xl">Time left</p>
+      <p className="text-2xl md:text-3xl">Time left</p>
       <p
         data-testid="time-left"
-        className={`${time < REMAINDER_TIME ? "text-red-700" : ""} text-7xl`}
+        className={`${
+          time < REMAINDER_TIME ? "text-red-700" : ""
+        } text-6xl md:text-7xl`}
       >
         {getMinutes(time)}:{getSeconds(time)}
       </p>

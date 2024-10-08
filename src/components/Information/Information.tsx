@@ -12,14 +12,16 @@ const Information = ({ className = "" }: Props) => {
   return (
     <section
       data-testid="information"
-      className={`${className} ${
-        !state.activeGame ? OPACITY_INACTIVE_GAME : ""
-      }`}
+      className={`
+        ${className} 
+        ${!state.activeGame ? OPACITY_INACTIVE_GAME : ""}
+        justify-between
+      `}
     >
       <Timer />
       <article>
-        <p className="text-2xl mt-10">Clicked</p>
-        <p data-testid="elementsClicked" className="text-8xl">
+        <p className="text-2xl md:text-2xl md:mt-10">Clicked</p>
+        <p data-testid="elementsClicked" className="text-6xl md:text-8xl">
           {state.elementsClicked}
         </p>
       </article>
