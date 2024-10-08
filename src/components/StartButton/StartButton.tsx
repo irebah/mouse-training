@@ -13,10 +13,7 @@ const StartButton = () => {
   };
 
   return !state.activeGame ? (
-    <button
-      className="absolute px-5 py-3 uppercase bg-blue-500 hover:bg-blue-700 text-white font-bold text-4xl border-2 border-blue-700 rounded-xl"
-      onClick={onStartGame}
-    >
+    <button className="absolute px-5 py-3 btn" onClick={onStartGame}>
       Start
     </button>
   ) : null;

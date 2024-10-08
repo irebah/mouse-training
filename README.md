@@ -1,11 +1,11 @@
 # Mouse training interactive game
 
 [![codecov](https://codecov.io/github/irebah/mouse-training/graph/badge.svg?token=SXGPSEOD4N)](https://codecov.io/github/irebah/mouse-training)
-[![Build and test](https://github.com/irebah/mouse-training/actions/workflows/build.yml/badge.svg)](https://github.com/irebah/mouse-training/actions/workflows/build.yml)
+[![Build, test and deploy](https://github.com/irebah/mouse-training/actions/workflows/build.yml/badge.svg)](https://github.com/irebah/mouse-training/actions/workflows/build.yml)
 
 ## Test Your Speed!
 
-Challenge yourself to click as many dots as you can in just 90 seconds!
+Challenge yourself to click as many dots as you can in just 60 seconds!
 
 This application is perfect for assessing your mouse-clicking speed or helping children improve their coordination and skills. Compete against your own best scores or challenge friends and family to see who can click the most dots!
 
@@ -63,9 +63,9 @@ To set up the project locally, follow these steps:
 
 ## Usage
 
-To start the game, click the Start button. The timer will begin counting down from the default value of 1 minute and 30 seconds. Your objective is to click on as many black dots as possible before the timer runs out.
+To start the game, click the Start button. The timer will begin counting down from the default value of 1 minute. Your objective is to click on as many black dots as possible before the timer runs out.
 
-When you have only 30 seconds left, the timer will turn red to alert you about the remaining time. Additionally, a beep will sound when there are only 10 seconds left, adding to the urgency. On the right side of the screen, you’ll see a counter displaying the total number of dots you’ve clicked. Keep an eye on the timer and try to beat your previous score!
+When you have only 20 seconds left, the timer will turn red to alert you about the remaining time. Additionally, a beep will sound when there are only 10 seconds left, adding to the urgency. On the right side of the screen, you’ll see a counter displaying the total number of dots you’ve clicked. Keep an eye on the timer and try to beat your previous score!
 
 Have fun!
 
