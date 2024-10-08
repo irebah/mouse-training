@@ -7,6 +7,14 @@ import userEvent from "@testing-library/user-event";
 import { GameProvider } from ".";
 
 describe("GameProvider", () => {
+  beforeAll(() => {
+    vi.spyOn(console, "error").mockImplementation(() => {});
+  });
+
+  afterAll(() => {
+    vi.restoreAllMocks();
+  });
+
   test("it should throw an exception when useGameProvider is used outside of a provider context", () => {
     expect(() => render(<DummyComponentContext />)).toThrow(
       "useGameProvider must be used within a GameProvider"

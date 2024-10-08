@@ -16,12 +16,6 @@ describe("Information", () => {
     expect(screen.getByTestId("information")).toBeInTheDocument();
   });
 
-  test("it should not render when it has not the game context", () => {
-    expect(() => render(<Information />)).toThrow(
-      "useGameProvider must be used within a GameProvider"
-    );
-  });
-
   test("it should display the number of elements clicked from the state", () => {
     const dummyElementsClicked = 100;
     render(

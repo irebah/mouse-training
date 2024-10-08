@@ -31,12 +31,6 @@ describe("Start Button", () => {
     expect(screen.queryAllByRole("button").length).toBe(0);
   });
 
-  test("it should not render when it has not the game context", () => {
-    expect(() => render(<StartButton />)).toThrow(
-      "useGameProvider must be used within a GameProvider"
-    );
-  });
-
   test("it should start the game and select a random square when the button is clicked and the game is not active", async () => {
     const user = userEvent.setup();
 

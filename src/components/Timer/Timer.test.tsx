@@ -25,12 +25,6 @@ describe("Timer", () => {
     expect(screen.getByTestId("timer")).toBeInTheDocument();
   });
 
-  test("it should not render when it has not the game context", () => {
-    expect(() => render(<Timer />)).toThrow(
-      "useGameProvider must be used within a GameProvider"
-    );
-  });
-
   test("it should display the max time when active game is false", () => {
     render(
       <MockProvider mockState={{ ...initialState, activeGame: false }}>

@@ -27,12 +27,6 @@ describe("ClickableContainer", () => {
     expect(screen.getByTestId("clickableContainer")).toBeInTheDocument();
   });
 
-  test("it should not render when it has not the game context", () => {
-    expect(() => render(<ClickableContainer />)).toThrow(
-      "useGameProvider must be used within a GameProvider"
-    );
-  });
-
   test("it should accept a classname", () => {
     const dummyClass = "dummy";
 
