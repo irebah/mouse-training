@@ -97,4 +97,26 @@ describe("Timer", () => {
 
     expect(mockDispatch).toHaveBeenCalledWith({ type: STOP_GAME });
   });
+
+  test("it should play an audio when the timer reaches 10 seconds", () => {
+    const playMock = vi.fn();
+
+    global.Audio = vi.fn().mockImplementation(() => ({
+      play: playMock,
+    }));
+
+    render(
+      <MockProvider mockState={{ ...initialState, activeGame: true }}>
+        <Timer timeLeft={11} />
+      </MockProvider>
+    );
+
+    expect(playMock).toHaveBeenCalledTimes(0);
+
+    act(() => {
+      vi.advanceTimersByTime(1000);
+    });
+
+    expect(playMock).toHaveBeenCalledTimes(1);
+  });
 });

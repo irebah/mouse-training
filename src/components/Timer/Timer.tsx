@@ -3,6 +3,7 @@ import { useGameProvider } from "../../context/GameContext";
 import { MAX_TIME, REMAINDER_TIME } from "../../constants";
 import { getMinutes, getSeconds } from "../../utils/time";
 import { STOP_GAME } from "../../context/GameContext/types";
+import alertSound from "../../assets/202193__thomas_evdokimoff__10-second-countdown.flac";
 
 interface Props {
   timeLeft?: number;
@@ -10,6 +11,8 @@ interface Props {
 
 const Timer = ({ timeLeft = MAX_TIME }: Props) => {
   const [time, setTime] = useState<number>(timeLeft);
+  const [isPlaying, setIsPlaying] = useState(false);
+
   const { state, dispatch } = useGameProvider();
 
   useEffect(() => {
@@ -22,10 +25,19 @@ const Timer = ({ timeLeft = MAX_TIME }: Props) => {
       }
     } else {
       setTime(timeLeft);
+      setIsPlaying(false);
     }
 
     return () => clearInterval(intervalId);
   }, [state.activeGame, time, dispatch, timeLeft]);
+
+  useEffect(() => {
+    if (time === 10 && !isPlaying) {
+      const audio = new Audio(alertSound);
+      audio.play();
+      setIsPlaying(true);
+    }
+  }, [time, isPlaying]);
 
   return (
     <div data-testid="timer">

@@ -1,50 +1,73 @@
-# React + TypeScript + Vite
+# Mouse training interactive game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Test Your Speed!
 
-Currently, two official plugins are available:
+Challenge yourself to click as many dots as you can in just 90 seconds!
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This application is perfect for assessing your mouse-clicking speed or helping children improve their coordination and skills. Compete against your own best scores or challenge friends and family to see who can click the most dots!
 
-## Expanding the ESLint configuration
+You can view the live version of the project at [https://irebah.github.io/mouse-training](https://irebah.github.io/mouse-training).
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Table of Contents
 
-- Configure the top-level `parserOptions` property like this:
+- [Features](#features)
+- [Technologies](#technologies)
+- [Getting Started](#getting-started)
+- [Usage](#usage)
+- [License](#license)
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Features
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- Interactive game to test ability and focus
+- Size of the dots as well as the gap in between them is configurable at [constants](./src/constants/index.ts)
+- The time for the game as well as the moment when it should become red is configurable at [constants](./src/constants/index.ts)
+- The colour of the inactive dots as well of the active dots is configurable at [constants](./src/constants/index.ts)
+- Lightweight and fast development environment using Vite
+- TypeScript for type safety and improved developer experience
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Technologies
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- **Vite**: A fast build tool that provides an optimal development environment.
+- **TypeScript**: A superset of JavaScript that offers static typing for better code quality.
+- **Vitest**: A fast and lightweight testing framework for Vite.
+- **TailwindCSS**: A utility-first CSS framework that allows for rapid UI development.
+- **pnpm**: A fast, disk space-efficient package manager.
+
+## Getting Started
+
+To set up the project locally, follow these steps:
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/irebah/mouse-training.git
+   cd mouse-training
+   ```
+
+2. **Install dependencies:**
+
+   ```bash
+   pnpm install
+   ```
+
+3. **Run the development server:**
+
+   ```bash
+    pnpm dev
+   ```
+
+4. **Open your browser: Navigate to http://localhost:5173 to view the application.**
+
+## Usage
+
+To start the game, click the Start button. The timer will begin counting down from the default value of 1 minute and 30 seconds. Your objective is to click on as many black dots as possible before the timer runs out.
+
+When you have only 30 seconds left, the timer will turn red to alert you about the remaining time. Additionally, a beep will sound when there are only 10 seconds left, adding to the urgency. On the right side of the screen, you’ll see a counter displaying the total number of dots you’ve clicked. Keep an eye on the timer and try to beat your previous score!
+
+Have fun!
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE file](./LICENSE.md) for details.
+
+The sound used in the project is 10 Second Countdown by thomas_evdokimoff -- https://freesound.org/s/202193/ -- License: Attribution 4.0
