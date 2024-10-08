@@ -15,11 +15,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Get latest build run ID
+        id: get_run_id
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const { data: runs } = await github.actions.listWorkflowRuns({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow: 'Build',
+              per_page: 1
+            });
+            return runs.workflow_runs[0].id;
+
       - name: Download build artifact
         uses: actions/download-artifact@v4
         with:
           name: build-artifact
           github-token: ${{ secrets.GH_PAT }} # token with actions:read permissions on target repo
+          repository: ${{ github.repository }}
+          run-id: ${{ steps.get_run_id.outputs.result }}
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
