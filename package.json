@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest",
-    "coverage": "vitest run --coverage",
+    "coverage": "vitest --reporter=junit run --coverage",
     "predeploy": "pnpm run build",
     "deploy": "gh-pages -d dist"
   },

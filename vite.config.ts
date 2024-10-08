@@ -17,6 +17,9 @@ export default defineConfig({
     environment: "happy-dom",
     setupFiles: "./setupTests.ts",
     globals: true,
+    outputFile: {
+      junit: "./junit-report.xml",
+    },
     coverage: {
       provider: "v8",
       reporter: ["text", "json", "html"],

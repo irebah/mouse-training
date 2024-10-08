@@ -33,6 +33,12 @@ jobs:
       - name: Run tests and generate coverage
         run: pnpm run coverage
 
+      - name: Upload test results to Codecov
+        if: ${{ !cancelled() }}
+        uses: codecov/test-results-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
       - name: Upload results to Codecov
         uses: codecov/codecov-action@v4
         with:

@@ -27,3 +27,4 @@ dist-ssr
 /coverage
 tsconfig.app.*
 tsconfig.node.*
+junit-report.xml
