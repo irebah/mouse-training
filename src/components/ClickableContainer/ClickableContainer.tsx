@@ -1,14 +1,18 @@
 import { useEffect, useRef } from "react";
-import Clickable from "./Clickable/Clickable";
-import { useGameProvider } from "../context/GameContext";
-import { CLICKABLE_SIZE, OPACITY_INACTIVE_GAME } from "../constants";
-import { SET_GRID_SIZE } from "../context/GameContext/types";
+import { useGameProvider } from "../../context/GameContext";
+import Clickable from "../Clickable/Clickable";
+import { CLICKABLE_SIZE, OPACITY_INACTIVE_GAME } from "../../constants";
+import { SET_GRID_SIZE } from "../../context/GameContext/types";
 
 interface Props {
   className?: string;
+  clickableSize?: number;
 }
 
-const ClickableContainer = ({ className = "" }: Props) => {
+const ClickableContainer = ({
+  className = "",
+  clickableSize = CLICKABLE_SIZE,
+}: Props) => {
   const gridRef = useRef<HTMLDivElement | null>(null);
   const { state, dispatch } = useGameProvider();
 
@@ -17,8 +21,8 @@ const ClickableContainer = ({ className = "" }: Props) => {
       const width = gridRef.current.clientWidth;
       const height = gridRef.current.clientHeight;
 
-      const cols = Math.floor(width / CLICKABLE_SIZE);
-      const rows = Math.floor(height / CLICKABLE_SIZE);
+      const cols = Math.floor(width / clickableSize);
+      const rows = Math.floor(height / clickableSize);
 
       dispatch({
         type: SET_GRID_SIZE,
@@ -28,10 +32,11 @@ const ClickableContainer = ({ className = "" }: Props) => {
         },
       });
     }
-  }, [gridRef, dispatch]);
+  }, [dispatch, clickableSize]);
 
   return (
     <section
+      data-testid="clickableContainer"
       className={`${
         !state.activeGame ? OPACITY_INACTIVE_GAME : ""
       } w-full h-full`}
@@ -40,7 +45,7 @@ const ClickableContainer = ({ className = "" }: Props) => {
         ref={gridRef}
         className={`${className} grid gap-0`}
         style={{
-          gridTemplateColumns: `repeat(${state.cols}, ${CLICKABLE_SIZE}px)`,
+          gridTemplateColumns: `repeat(${state.cols}, ${clickableSize}px)`,
         }}
       >
         {[...Array(state.rows * state.cols).keys()].map((index) => (

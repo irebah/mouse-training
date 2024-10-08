@@ -1,5 +1,5 @@
+import ClickableContainer from "./components/ClickableContainer/ClickableContainer";
 import Information from "./components/Information/Information";
-import ClickableContainer from "./components/ClickableContainer";
 import StartButton from "./components/StartButton/StartButton";
 import { GameProvider } from "./context/GameContext";
 
