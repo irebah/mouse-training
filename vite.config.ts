@@ -11,6 +11,7 @@ export default defineConfig({
       enableBundleAnalysis: process.env.CODECOV_TOKEN !== undefined,
       bundleName: "mouse-training",
       uploadToken: process.env.CODECOV_TOKEN,
+      gitService: "github",
     }),
   ],
   test: {

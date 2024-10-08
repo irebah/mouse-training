@@ -29,7 +29,7 @@ describe("Clickable", () => {
 
   test("it should not render when it has not the game context", () => {
     expect(() => render(<Clickable />)).toThrow(
-      "useGameProvider must be used within a GameProvider"
+      "useGameProvider must be used within a GameProviderr"
     );
   });
 

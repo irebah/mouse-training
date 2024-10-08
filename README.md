@@ -1,6 +1,8 @@
-[![codecov](https://codecov.io/github/irebah/mouse-training/graph/badge.svg?token=SXGPSEOD4N)](https://codecov.io/github/irebah/mouse-training)
-
 # Mouse training interactive game
+
+[![codecov](https://codecov.io/github/irebah/mouse-training/graph/badge.svg?token=SXGPSEOD4N)](https://codecov.io/github/irebah/mouse-training)
+[![Build](https://github.com/irebah/mouse-training/actions/workflows/build.yml/badge.svg)](https://github.com/irebah/mouse-training/actions/workflows/build.yml)
+[![Test](https://github.com/irebah/mouse-training/actions/workflows/test.yml/badge.svg)](https://github.com/irebah/mouse-training/actions/workflows/test.yml)
 
 ## Test Your Speed!
 
