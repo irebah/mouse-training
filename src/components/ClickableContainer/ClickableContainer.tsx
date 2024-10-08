@@ -3,6 +3,7 @@ import { useGameProvider } from "../../context/GameContext";
 import Clickable from "../Clickable/Clickable";
 import { CLICKABLE_SIZE, OPACITY_INACTIVE_GAME } from "../../constants";
 import { SET_GRID_SIZE } from "../../context/GameContext/types";
+import { logEvent } from "../../utils/analytics";
 
 interface Props {
   className?: string;
@@ -31,6 +32,7 @@ const ClickableContainer = ({
           cols,
         },
       });
+      logEvent("set_grid", "setup");
     }
   }, [dispatch, clickableSize]);
 

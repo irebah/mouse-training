@@ -4,6 +4,7 @@ import { MAX_TIME, REMAINDER_TIME } from "../../constants";
 import { getMinutes, getSeconds } from "../../utils/time";
 import { STOP_GAME } from "../../context/GameContext/types";
 import alertSound from "../../assets/202193__thomas_evdokimoff__10-second-countdown.flac";
+import { logEvent } from "../../utils/analytics";
 
 interface Props {
   timeLeft?: number;
@@ -22,6 +23,7 @@ const Timer = ({ timeLeft = MAX_TIME }: Props) => {
       intervalId = setInterval(() => setTime((time) => time - 1), 1000);
       if (time <= 0) {
         dispatch({ type: STOP_GAME });
+        logEvent("game_ended", "game_action");
       }
     } else {
       setTime(timeLeft);

@@ -9,13 +9,11 @@ export const initAnalytics = () => {
   }
 };
 
-// export const logEvent = (eventName: string, eventParams) => {
-//   if (import.meta.env.MODE !== "development") {
-//     ReactGA.event({
-//       category: eventParams.category || "default_category",
-//       action: eventName,
-//       label: eventParams.label || "",
-//       value: eventParams.value || 0,
-//     });
-//   }
-// };
+export const logEvent = (eventName: string, category?: string) => {
+  if (import.meta.env.MODE !== "development") {
+    ReactGA.event({
+      category: category || "default_category",
+      action: eventName,
+    });
+  }
+};
