@@ -14,6 +14,7 @@ const config: Config = {
       addBase({
         "*": {
           boxSizing: "border-box",
+          userSelect: "none",
         },
         "*::before": {
           boxSizing: "border-box",
