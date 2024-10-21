@@ -4,6 +4,7 @@ import Clickable from "../Clickable/Clickable";
 import { CLICKABLE_SIZE, OPACITY_INACTIVE_GAME } from "../../constants";
 import { SET_GRID_SIZE } from "../../context/GameContext/types";
 import { logEvent } from "../../utils/analytics";
+import failSound from "../../assets/419023__jacco18__acess-denied-buzz.mp3";
 
 interface Props {
   className?: string;
@@ -15,6 +16,7 @@ const ClickableContainer = ({
   clickableSize = CLICKABLE_SIZE,
 }: Props) => {
   const gridRef = useRef<HTMLDivElement | null>(null);
+  const audio = useRef<HTMLAudioElement | null>(null);
   const { state, dispatch } = useGameProvider();
 
   useEffect(() => {
@@ -33,8 +35,14 @@ const ClickableContainer = ({
         },
       });
       logEvent("set_grid", "setup");
+
+      audio.current = new Audio(failSound);
     }
   }, [dispatch, clickableSize]);
+
+  const playSound = () => {
+    audio.current?.play();
+  };
 
   return (
     <section
@@ -51,7 +59,11 @@ const ClickableContainer = ({
         }}
       >
         {[...Array(state.rows * state.cols).keys()].map((index) => (
-          <Clickable key={index} active={index === state.activeElement} />
+          <Clickable
+            key={index}
+            active={index === state.activeElement}
+            onError={playSound}
+          />
         ))}
       </div>
     </section>

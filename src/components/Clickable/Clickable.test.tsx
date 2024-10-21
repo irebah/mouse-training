@@ -5,6 +5,7 @@ import {
   ACTIVE_BACKGROUND_COLOR,
   CLICKABLE_GAP,
   CLICKABLE_SIZE,
+  ERROR_BACKGROUND_COLOR,
   INACTIVE_BACKGROUND_COLOR,
 } from "../../constants";
 import MockProvider from "../../mocks/MockProvider";
@@ -15,6 +16,7 @@ import {
   SELECT_RANDOM_SQUARE,
 } from "../../context/GameContext/types";
 import { GameProvider } from "../../context/GameContext";
+import { act } from "react";
 
 describe("Clickable", () => {
   test("it should render without any param when it has the game context", () => {
@@ -128,5 +130,64 @@ describe("Clickable", () => {
 
     const button = screen.getByRole("button");
     expect(button).toHaveClass(dummyClass);
+  });
+
+  test("it should trigger onError when clicked if the element is not active and the game is happening", async () => {
+    const user = userEvent.setup();
+
+    const mockDispatch = vi.fn();
+    const onError = vi.fn();
+
+    render(
+      <MockProvider
+        mockState={{ ...initialState, activeGame: true }}
+        mockDispatch={mockDispatch}
+      >
+        <Clickable active={false} onError={onError} />
+      </MockProvider>
+    );
+
+    await user.click(screen.getByRole("button"));
+
+    expect(mockDispatch).not.toHaveBeenCalled();
+    expect(mockDispatch).not.toHaveBeenCalled();
+
+    expect(onError).toHaveBeenCalled();
+  });
+});
+
+describe("Clickable fake time", () => {
+  beforeEach(() => {
+    vi.useFakeTimers({ shouldAdvanceTime: true });
+  });
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
+  test("it should use error color (for 300ms) when clicked if the element is not active and the game is happening", async () => {
+    const user = userEvent.setup();
+
+    const mockDispatch = vi.fn();
+    const onError = vi.fn();
+
+    render(
+      <MockProvider
+        mockState={{ ...initialState, activeGame: true }}
+        mockDispatch={mockDispatch}
+      >
+        <Clickable active={false} onError={onError} />
+      </MockProvider>
+    );
+
+    const button = screen.getByRole("button");
+    await user.click(button);
+
+    expect(button).toHaveClass(ERROR_BACKGROUND_COLOR);
+
+    act(() => {
+      vi.advanceTimersByTime(300);
+    });
+
+    expect(button).not.toHaveClass(ERROR_BACKGROUND_COLOR);
   });
 });

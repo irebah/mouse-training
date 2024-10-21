@@ -5,6 +5,7 @@ import MockProvider from "../../mocks/MockProvider";
 import { SET_GRID_SIZE } from "../../context/GameContext/types";
 import initialState from "../../context/GameContext/initialState";
 import { OPACITY_INACTIVE_GAME } from "../../constants";
+import userEvent from "@testing-library/user-event";
 
 describe("ClickableContainer", () => {
   beforeAll(() => {
@@ -105,5 +106,37 @@ describe("ClickableContainer", () => {
     expect(screen.getByTestId("clickableContainer")).not.toHaveClass(
       OPACITY_INACTIVE_GAME
     );
+  });
+
+  test("it should play a sound when Clickable triggers onError", async () => {
+    const user = userEvent.setup();
+    const playMock = vi.fn();
+
+    global.Audio = vi.fn().mockImplementation(() => ({
+      play: playMock,
+    }));
+
+    render(
+      <MockProvider
+        mockState={{
+          ...initialState,
+          activeGame: true,
+          rows: 2,
+          cols: 1,
+          activeElement: 1,
+        }}
+      >
+        <ClickableContainer />
+      </MockProvider>
+    );
+
+    const button = screen.getAllByRole("button").at(0);
+    expect(playMock).toHaveBeenCalledTimes(0);
+
+    if (button) {
+      await user.click(button);
+    }
+
+    expect(playMock).toHaveBeenCalledTimes(1);
   });
 });

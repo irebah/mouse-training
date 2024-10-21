@@ -74,3 +74,5 @@ Have fun!
 This project is licensed under the MIT License. See the [LICENSE file](./LICENSE.md) for details.
 
 The sound used in the project is 10 Second Countdown by thomas_evdokimoff -- https://freesound.org/s/202193/ -- License: Attribution 4.0
+
+The sound used in the project is acess denied buzz by Jacco18 -- https://freesound.org/s/419023/ -- License: Creative Commons 0
