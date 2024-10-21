@@ -67,6 +67,8 @@ To start the game, click the Start button. The timer will begin counting down fr
 
 When you have only 20 seconds left, the timer will turn red to alert you about the remaining time. Additionally, a beep will sound when there are only 10 seconds left, adding to the urgency. On the right side of the screen, you’ll see a counter displaying the total number of dots you’ve clicked. Keep an eye on the timer and try to beat your previous score!
 
+When clicking in an incorrect dot the dot will become red for 300ms and a 'fail' sound will trigger.
+
 Have fun!
 
 ## License
